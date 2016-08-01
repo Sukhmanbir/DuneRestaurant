@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*    
+    file: controllers/CartController.cs
+    Controllers for the shopping cart
+    author: Douglas Brunner
+    website: http://dunerestaurant.azurewebsites.net
+    history:
+        initial commit
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*    
+    file: controllers/HomeController.cs
+    Controllers for static pages
+    author: Douglas Brunner
+    website: http://dunerestaurant.azurewebsites.net
+    history:
+        initial commit
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

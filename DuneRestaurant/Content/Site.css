@@ -1,4 +1,12 @@
-﻿body {
+﻿/*
+    file: content/site.css
+    Sitewide stylees
+    author: Douglas Brunner
+    website: http://dunerestaurant.azurewebsites.net
+    history:
+        initial commit
+*/
+body {
     padding-top: 70px;
     padding-bottom: 20px;
 }
