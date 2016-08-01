@@ -17,13 +17,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="logo" href="/"><img src="~/Assets/Images/logo.png" alt="The Dune Restaurant" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Menu", "Index", "Menu")</li>
+                    <li><a href="">Cart (1)</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -31,12 +30,14 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
-
+    <footer>
+        <p>&copy; @DateTime.Now.Year - The Dune</p>
+        <p>
+            @Html.ActionLink("About Us", "About", "Home") &middot; 
+            @Html.ActionLink("Contact Us", "Contact", "Home")
+        </p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
