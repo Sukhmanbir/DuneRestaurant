@@ -6,9 +6,10 @@
     history:
         initial commit
         added homepage styles
+        increased top margin on body and added contact page styles
 */
 body {
-    padding-top: 70px;
+    padding-top: 8em;
     padding-bottom: 20px;
 }
 
@@ -58,9 +59,6 @@ h1 {
 }
 
 /* homepage */
-div#homepage {
-    margin-top: 4em;
-}
 
 div#homepage h1 {
     margin: 0 0 0.5em 0;
@@ -76,6 +74,10 @@ div#homepage h4 {
     margin-top: 2em;
 }
 
+/* contact */
+div#contact p.buttons {
+    margin-top: 1.5em;
+}
 
 /* menu page */
 div.thumbnail {

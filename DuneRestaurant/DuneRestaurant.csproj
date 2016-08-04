@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\logo.png" />
+    <Content Include="Assets\Images\map.png" />
     <Content Include="Assets\Images\porkandpepper.png" />
     <Content Include="Assets\Images\porkandpepper_thumb.png" />
     <Content Include="Assets\Images\restaurant-inside.jpeg" />

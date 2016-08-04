@@ -1,17 +1,71 @@
-﻿@{
+﻿<!--
+    file: views/account/contact.cshtml
+    Sitewide stylees
+    author: Douglas Brunner
+    website: http://dunerestaurant.azurewebsites.net
+    history:
+        implemented wireframe
+-->
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="container" id="contact">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h4>Brick and Mortar</h4>
+            <address>
+                65 Lakeshore Drive<br />
+                Barrie, Ontario, L4D 3T5<br />
+                <abbr title="Telehone">T</abbr>
+                705-555-5555
+            </address>
+            <br />
+            <h4>Digital</h4>
+            <address>
+                <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            </address>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="thumbnail">
+                <img src="~/Assets/Images/map.png" alt="Map of Restaurant Location" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Get In Touch</h4>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input class="form-control" type="text" name="firstname" required />
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input class="form-control" type="text" name="lastname" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" required />
+            </div>
+        </div>
+        <div class="tester col-xs-12 col-md-6">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message"></textarea>
+            <p class="text-center buttons">
+                <input class="btn btn-default" type='submit' name="submit" value="Submit" />
+                <a href="/" class="btn btn-default" />Back</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
