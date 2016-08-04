@@ -5,6 +5,7 @@
     website: http://dunerestaurant.azurewebsites.net
     history:
         initial commit
+        added homepage styles
 */
 body {
     padding-top: 70px;
@@ -55,6 +56,26 @@ h1 {
 .logo {
     margin-right: 2em;
 }
+
+/* homepage */
+div#homepage {
+    margin-top: 4em;
+}
+
+div#homepage h1 {
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    font-variant: small-caps;
+}
+
+div#homepage p.slogan {
+    font-size: 1.1em;
+}
+
+div#homepage h4 {
+    margin-top: 2em;
+}
+
 
 /* menu page */
 div.thumbnail {
