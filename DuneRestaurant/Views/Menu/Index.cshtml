@@ -5,112 +5,43 @@
     website: http://dunerestaurant.azurewebsites.net
     history:
         initial commit (HTML)
+        display menu items from database
 -->
 
 @{
     ViewBag.Title = "Index";
 }
 
+@using DuneRestaurant.Models
+@model IEnumerable<Dish>
+
+
 <h1>Menu</h1>
 
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img alt="Bootstrap Thumbnail First" src="http://lorempixel.com/output/people-q-c-600-200-1.jpg" />
-            <div class="caption">
-                <h3>
-                    <a href="/Menu/Dish">Pork and Peppers</a>
-                </h3>
-                <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p>
-                    <a class="btn btn-primary" href="/Cart/Add">Add to Cart</a> $12.95
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img alt="Bootstrap Thumbnail First" src="http://lorempixel.com/output/people-q-c-600-200-1.jpg" />
-            <div class="caption">
-                <h3>
-                    <a href="/Menu/Dish">Fishhead Soup</a>
-                </h3>
-                <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p>
-                    <a class="btn btn-primary" href="/Cart/Add">Add to Cart</a> $12.95
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img alt="Bootstrap Thumbnail First" src="http://lorempixel.com/output/people-q-c-600-200-1.jpg" />
-            <div class="caption">
-                <h3>
-                    <a href="/Menu/Dish">Sweet and Sour Chicken Balls</a>
-                </h3>
-                <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p>
-                    <a class="btn btn-primary" href="/Cart/Add">Add to Cart</a> $12.95
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="container">
 
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img alt="Bootstrap Thumbnail First" src="http://lorempixel.com/output/people-q-c-600-200-1.jpg" />
-            <div class="caption">
-                <h3>
-                    <a href="/Menu/Dish">Onion Rings</a>
-                </h3>
-                <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p>
-                    <a class="btn btn-primary" href="/Cart/Add">Add to Cart</a> $12.95
-                </p>
+    @foreach (Dish item in Model)
+    {
+
+        // create the thumbnail URL
+        var thumbURL = @item.imageURL + "_thumb.png";
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img alt="Bootstrap Thumbnail First" src="~/Assets/Images/@thumbURL" />
+                <div class="caption">
+                    <h3>
+                        <a href="/Menu/Dish">@item.Name</a>
+                    </h3>
+                    <p>
+                        @item.Description_Short
+                    </p>
+                    <p>
+                        <a class="btn btn-primary" href="/Cart/Add?dishID=@item.DishID">Add to Cart</a> $@item.Price
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img alt="Bootstrap Thumbnail First" src="http://lorempixel.com/output/people-q-c-600-200-1.jpg" />
-            <div class="caption">
-                <h3>
-                    <a href="/Menu/Dish">Spaghetti</a>
-                </h3>
-                <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p>
-                    <a class="btn btn-primary" href="/Cart/Add">Add to Cart</a> $12.95
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img alt="Bootstrap Thumbnail First" src="http://lorempixel.com/output/people-q-c-600-200-1.jpg" />
-            <div class="caption">
-                <h3>
-                    <a href="/Menu/Dish">Lasagna</a>
-                </h3>
-                <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p>
-                    <a class="btn btn-primary" href="/Cart/Add">Add to Cart</a> $12.95
-                </p>
-            </div>
-        </div>
-    </div>
+
+    }
 </div>

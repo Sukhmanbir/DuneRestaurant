@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -176,25 +178,79 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AzureConnection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AzureConnection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AzureConnection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AzureConnection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AzureConnection.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cart.cs">
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dish.cs">
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\drunkenshrimp.png" />
+    <Content Include="Assets\Images\drunkenshrimp_thumb.png" />
     <Content Include="Assets\Images\logo.png" />
     <Content Include="Assets\Images\map.png" />
     <Content Include="Assets\Images\porkandpepper.png" />
     <Content Include="Assets\Images\porkandpepper_thumb.png" />
     <Content Include="Assets\Images\restaurant-inside.jpeg" />
+    <Content Include="Assets\Images\stinkytofu.png" />
+    <Content Include="Assets\Images\stinkytofu_thumb.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\AzureConnection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AzureConnection.edmx</DependentUpon>
+      <LastGenOutput>AzureConnection.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AzureConnection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AzureConnection.edmx</DependentUpon>
+      <LastGenOutput>AzureConnection.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\AzureConnection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AzureConnection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AzureConnection.edmx.diagram">
+      <DependentUpon>AzureConnection.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -261,6 +317,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
