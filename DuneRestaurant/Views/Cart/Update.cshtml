@@ -13,3 +13,80 @@
 
 <h2>Update Cart</h2>
 
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pork and Peppers</td>
+                <td>$12.95</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Fishhead Soup</td>
+                <td>$12.95</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Sweet adn Sour Chicken Balls</td>
+                <td>$12.95</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Onion Rings</td>
+                <td>$12.95</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Spaghetti</td>
+                <td>$12.95</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Lasagna</td>
+                <td>$12.95</td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container pull-right">
+    <div class="row">
+        <h3>Total Price: $77.70</h3>
+    </div>
+    <div class="row pull-right">
+        <a class="btn btn-primary" href="/Cart/Checkout">Checkout</a>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Item</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-3 col-md-4 text-center item">
+                    <img src="~/Assets/Images/drukenshrimp_thumb.png" class="thumbnail" />
+                </div>
+                <div class="row">
+                    <p>Do you wish to delete this item?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">No</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -182,6 +182,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\drukenshrimp_thumb.png" />
     <Content Include="Assets\Images\logo.png" />
     <Content Include="Assets\Images\map.png" />
     <Content Include="Assets\Images\porkandpepper.png" />
