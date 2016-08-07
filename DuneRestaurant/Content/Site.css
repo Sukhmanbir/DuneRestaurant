@@ -99,3 +99,14 @@ footer {
     border-width: 1px 0 0 0;
     text-align: center;
 }
+
+/* cart */
+.edit {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* checkout */
+.checkout {
+    padding-left: 40%;
+}
