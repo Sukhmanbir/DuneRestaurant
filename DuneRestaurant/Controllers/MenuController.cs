@@ -6,6 +6,7 @@
     history:
         initial commit
         display menu contents from database
+        display individual dish from database
 */
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,18 @@ namespace DuneRestaurant.Controllers
             return View(azure.Dishes.ToList());
         }
 
-        public ActionResult Dish() {
-            return View();
+        public ActionResult Dish(int dishID = -1) {
+            
+            AzureConnection azure = new AzureConnection();
+
+            // do nothing if no id supplied
+            if (dishID == -1)
+            {
+                Response.Redirect("/Inventory");
+            }
+
+            Dish dish = azure.Dishes.Single(g => g.DishID == dishID);
+            return View(dish);
         }
     }
 }

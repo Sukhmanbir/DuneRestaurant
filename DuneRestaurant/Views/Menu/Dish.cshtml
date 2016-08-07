@@ -5,30 +5,28 @@
     website: http://dunerestaurant.azurewebsites.net
     history:
         initial commit (HTML)
+        display dish from database
 -->
 @{
     ViewBag.Title = "Dish";
 }
 
+@using DuneRestaurant.Models
+@model Dish
+
 <div class="row">
     <div class="col-md-6">
-        <img src="~/Assets/Images/porkandpepper.png" alt="Pork and Pepper" />
+        <img class="shadow" src="~/Assets/Images/porkandpepper.png" alt="Pork and Pepper" />
     </div>
     <div class="col-md-6">
         <h2>
-            Pork and Pepper
+            @Model.Name
         </h2>
         <p>
-            Lorem ipsum dolor sit amet, id mea vocibus suscipit oportere, sit audire civibus tincidunt at. Voluptua invidunt erroribus qui no. Vis legimus percipit partiendo at, sea ne cetero partiendo. Ea sit quod aliquam, summo doming moderatius te usu. Impetus nominati in eos. Mel diam option consetetur ea, eu populo disputando repudiandae mei.
+            @Model.Description_Long
         </p>
         <p>
-            Eam ullum dolorum temporibus ne, movet omnes has at. Utamur postulant expetenda ea per. Vis ut autem epicuri iracundia. Scripta explicari voluptaria cum te, et mel dicat percipitur efficiendi. Ei vel dicunt fastidii intellegam.
-        </p>
-        <p>
-            Vix ei quod paulo mollis, maluisset efficiantur ne ius. Usu et partem ridens, ut vim populo rationibus deseruisse. Illum impetus constituto nam an, no autem clita saepe vim, ex eum vide albucius urbanitas. Ne vix mentitum erroribus abhorreant, id brute aperiri nec. Nec nulla consulatu an, nec ad evertitur delicatissimi, ut phaedrum platonem pericula mel.
-        </p>
-        <p>
-            <a class="btn btn-primary btn-large" href="/Cart/Add">Add to Cart</a> 
+            <a class="btn btn-primary btn-large" href="/Cart/Add?DishId=@Model.DishID">Add to Cart</a> 
             <a class="btn btn-primary btn-large" href="/Menu">Back</a> 
         </p>
     </div>
