@@ -31,5 +31,6 @@ namespace DuneRestaurant.Models
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Dish> Dishes { get; set; }
+        public virtual DbSet<CartView> CartViews { get; set; }
     }
 }

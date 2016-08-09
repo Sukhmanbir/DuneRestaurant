@@ -12,13 +12,14 @@ namespace DuneRestaurant.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Dish
+    public partial class CartView
     {
         public int DishID { get; set; }
+        public int CartID { get; set; }
+        public string UserID { get; set; }
+        public int Quantity { get; set; }
         public string Name { get; set; }
-        public string Description_Short { get; set; }
-        public string Description_Long { get; set; }
         public decimal Price { get; set; }
-        public string URL { get; set; }
+        public string Description_Short { get; set; }
     }
 }

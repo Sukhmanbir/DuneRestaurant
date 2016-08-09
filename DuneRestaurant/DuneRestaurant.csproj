@@ -208,6 +208,9 @@
     <Compile Include="Models\Cart.cs">
       <DependentUpon>AzureConnection.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartView.cs">
+      <DependentUpon>AzureConnection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dish.cs">
       <DependentUpon>AzureConnection.tt</DependentUpon>
     </Compile>
@@ -263,7 +266,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
