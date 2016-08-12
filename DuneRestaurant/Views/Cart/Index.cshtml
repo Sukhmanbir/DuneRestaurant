@@ -5,6 +5,7 @@
     website: http://dunerestaurant.azurewebsites.net
     history:
         initial commit
+        update cart quantity
 -->
 
 
@@ -42,7 +43,7 @@
                 @totalItemsOrdered += @item.Quantity;
                 @totalPrice += @total;
 
-                <form method="post" action="#">
+                <form method="post" action="/Cart/Update">
                 <tr>
                     <td>@item.Name</td>
                     <td>@item.Description_Short</td>
@@ -50,6 +51,7 @@
                     <td><input type="text" name="quantity" value="@item.Quantity" /></td>
                     <td>$@total</td>
                     <td>
+                        <input type="hidden" name="cartID" value="@item.CartID" />
                         <input type="submit" class="btn btn-primary" value="Update" />
                         <a class="btn btn-danger" href="#">Delete</a>
                     </td>

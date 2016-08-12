@@ -6,6 +6,7 @@
     history:
         initial commit
         display cart information from CartView
+        update cart quantity
 */
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,44 @@ namespace DuneRestaurant.Controllers
             return View();
         }
 
-        public ActionResult Update() {
-            return View();
+        [HttpPost]
+        public void Update() {
+
+            string cartIDString = Request.Form["cartId"];
+            string quantityString = Request.Form["quantity"];
+
+            // do nothing if either field is missing
+            if (string.IsNullOrEmpty(cartIDString) ||
+                string.IsNullOrWhiteSpace(cartIDString) ||
+                string.IsNullOrEmpty(quantityString) ||
+                string.IsNullOrWhiteSpace(quantityString))
+            {
+                Response.Redirect("/Cart");
+            }
+
+
+
+            // try to convert the cartID to a string
+            int cartID = -1;
+            int quantity = -1;
+            if (!Int32.TryParse(cartIDString, out cartID)) { Response.Redirect("/Cart"); }
+            if (!Int32.TryParse(quantityString, out quantity)) { Response.Redirect("/Cart"); }
+
+            // update the cart i tem quantity
+            using (AzureConnection db = new AzureConnection())
+            {
+                Models.Cart cartModel = (from Cart in db.Carts
+                                         where Cart.CartID == cartID
+                                         select Cart).FirstOrDefault();
+
+                cartModel.Quantity = quantity;
+
+                db.SaveChanges();
+
+            }
+            
+            Response.Redirect("/Cart");
+
         }
 
         public ActionResult Checkout() {
