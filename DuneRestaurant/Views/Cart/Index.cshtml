@@ -9,14 +9,18 @@
 
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Showing Cart";
+
+    // used to estimate delivery time
+    var totalItemsOrdered = 0;
+    var totalPrice = 0.0m;
 }
 
-<h2>Items in Cart</h2>
+@using DuneRestaurant.Models
+@model IEnumerable<CartView>
 
-<div class="container pull-right edit">
-        <a class="btn btn-primary" href="/Cart/Update">Edit Cart</a>
-</div>
+
+<h2>Items in Cart</h2>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover">
@@ -24,46 +28,47 @@
             <tr>
                 <th>Item</th>
                 <th>Description</th>
-                <th>Price</th>
+                <th>Item Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Pork and Peppers</td>
-                <td>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Fishhead Soup</td>
-                <td>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Sweet adn Sour Chicken Balls</td>
-                <td>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Onion Rings</td>
-                <td>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Spaghetti</td>
-                <td>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Lasagna</td>
-                <td>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
-                <td>$12.95</td>
-            </tr>
+            @foreach (CartView item in Model)
+            {
+
+                var total = @item.Price * @item.Quantity;
+                @totalItemsOrdered += @item.Quantity;
+                @totalPrice += @total;
+
+                <form method="post" action="#">
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description_Short</td>
+                    <td>$@item.Price</td>
+                    <td><input type="text" name="quantity" value="@item.Quantity" /></td>
+                    <td>$@total</td>
+                    <td>
+                        <input type="submit" class="btn btn-primary" value="Update" />
+                        <a class="btn btn-danger" href="#">Delete</a>
+                    </td>
+                </tr>
+                </form>
+            }
         </tbody>
     </table>
+    <p>
+
+        @{ var deliveryTime = @totalItemsOrdered * 3; }
+
+        Estimated delivery time: @deliveryTime minutes.
+    </p>
+
 </div>
 <div class="container pull-right">
     <div class="row">
-        <h3>Total Price: $77.70</h3>
+        <h3>Total Price: $@totalPrice</h3>
     </div>
     <div class="row pull-right">
         <a class="btn btn-primary" href="/Cart/Checkout">Checkout</a>

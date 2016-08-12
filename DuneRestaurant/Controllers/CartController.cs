@@ -5,12 +5,15 @@
     website: http://dunerestaurant.azurewebsites.net
     history:
         initial commit
+        display cart information from CartView
 */
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
+using DuneRestaurant.Models;
 
 namespace DuneRestaurant.Controllers
 {
@@ -19,7 +22,11 @@ namespace DuneRestaurant.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            return View();
+
+            AzureConnection azure = new AzureConnection();
+            
+            return View(azure.CartViews.ToList());
+
         }
 
         public ActionResult Delete() {
