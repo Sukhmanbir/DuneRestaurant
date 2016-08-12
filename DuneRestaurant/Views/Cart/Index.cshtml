@@ -6,6 +6,7 @@
     history:
         initial commit
         update cart quantity
+        delete cart item
 -->
 
 
@@ -53,7 +54,7 @@
                     <td>
                         <input type="hidden" name="cartID" value="@item.CartID" />
                         <input type="submit" class="btn btn-primary" value="Update" />
-                        <a class="btn btn-danger" href="#">Delete</a>
+                        <a class="btn btn-danger" href="/Cart/Delete?cartId=@item.CartID">Delete</a>
                     </td>
                 </tr>
                 </form>
