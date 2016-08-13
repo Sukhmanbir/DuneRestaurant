@@ -1,12 +1,13 @@
 ﻿<!--
     file: views/menu/index.cshtml
     Shows all menu items
-    author: Douglas Brunner
+    author: Douglas Brunner, Alex Nicholls
     website: http://dunerestaurant.azurewebsites.net
     history:
         initial commit (HTML)
         display menu items from database
         added dishID to query parameter
+        added add capability to the menu
 -->
 
 @{
@@ -20,7 +21,9 @@
 <h1>Menu</h1>
 
 <div class="container">
-
+    <p>
+        @Html.ActionLink("Add New", "Add")
+    </p>
     @foreach (Dish item in Model)
     {
 
