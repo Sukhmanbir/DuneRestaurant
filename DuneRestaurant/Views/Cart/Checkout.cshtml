@@ -10,7 +10,14 @@
 
 @{
     ViewBag.Title = "Checkout";
+
+    // used to estimate delivery time
+    var totalItemsOrdered = 0;
+    var totalPrice = 0.0m;
 }
+
+@using DuneRestaurant.Models
+@model IEnumerable<CartView>
 
 <h2>Checkout</h2>
 
@@ -19,18 +26,28 @@
         <h4>How would you like to pay?</h4>
     </div>
     <div class="radio">
-        <label><input type="radio" name="optradio">Debit</label>
+        <label><input type="radio" name="optradio" required>Debit</label>
     </div>
     <div class="radio">
-        <label><input type="radio" name="optradio">Credit</label>
+        <label><input type="radio" name="optradio" required>Credit</label>
     </div>
     <div class="radio">
-        <label><input type="radio" name="optradio">Cash</label>
+        <label><input type="radio" name="optradio" required>Cash</label>
     </div>
+    <p>
 </div>
+
+@foreach (CartView item in Model)
+            {
+
+                var total = @item.Price * @item.Quantity;
+                @totalItemsOrdered += @item.Quantity;
+                @totalPrice += @total;
+}
+
 <div class="container pull-right">
     <div class="row">
-        <h3>Total Price: $77.70</h3>
+        <h3>Total Price: $@totalPrice</h3>
     </div>
     <div class="row pull-right">
         <a class="btn btn-primary" href="/Cart/ConfirmOrder">Checkout</a>

@@ -46,7 +46,7 @@ namespace DuneRestaurant.Controllers
             int cartID = -1;
             if (!Int32.TryParse(cartIDString, out cartID)) { Response.Redirect("/Cart"); }
 
-            // update the cart i tem quantity
+            // update the cart item quantity
             using (AzureConnection db = new AzureConnection())
             {
                 Models.Cart cartModel = (from Cart in db.Carts
@@ -90,7 +90,7 @@ namespace DuneRestaurant.Controllers
             if (!Int32.TryParse(cartIDString, out cartID)) { Response.Redirect("/Cart"); }
             if (!Int32.TryParse(quantityString, out quantity)) { Response.Redirect("/Cart"); }
 
-            // update the cart i tem quantity
+            // update the cart item quantity
             using (AzureConnection db = new AzureConnection())
             {
                 Models.Cart cartModel = (from Cart in db.Carts
@@ -108,11 +108,15 @@ namespace DuneRestaurant.Controllers
         }
 
         public ActionResult Checkout() {
-            return View();
+            AzureConnection azure = new AzureConnection();
+
+            return View(azure.CartViews.ToList());
         }
 
         public ActionResult ConfirmOrder() {
-            return View();
+            AzureConnection azure = new AzureConnection();
+
+            return View(azure.CartViews.ToList());
         }
         
     }

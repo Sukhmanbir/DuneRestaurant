@@ -10,7 +10,14 @@
 
 @{
     ViewBag.Title = "ConfirmOrder";
+
+    // used to estimate delivery time
+    var totalItemsOrdered = 0;
+    var totalPrice = 0.0m;
 }
+
+@using DuneRestaurant.Models
+@model IEnumerable<CartView>
 
 <h2>Confirm Order</h2>
 
@@ -19,55 +26,55 @@
         <thead>
             <tr>
                 <th>Item</th>
+                <th>Description</th>
                 <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Pork and Peppers</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Fishhead Soup</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Sweet adn Sour Chicken Balls</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Onion Rings</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Spaghetti</td>
-                <td>$12.95</td>
-            </tr>
-            <tr>
-                <td>Lasagna</td>
-                <td>$12.95</td>
-            </tr>
+            @foreach (CartView item in Model)
+            {
+
+                var total = @item.Price * @item.Quantity;
+                @totalItemsOrdered += @item.Quantity;
+                @totalPrice += @total;
+
+                <form method="post" action="/Cart/Update">
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Description_Short</td>
+                        <td>$@item.Price</td>
+                        <td><input type="text" name="quantity" value="@item.Quantity" readonly/></td>
+                        <td>$@total</td>
+                    </tr>
+                </form>
+            }
         </tbody>
     </table>
 </div>
 
 <div class="row">
-    <strong>Estimated delivery time:</strong> 45 minutes
+    @{ var deliveryTime = @totalItemsOrdered * 3; }
+
+    Estimated delivery time: @deliveryTime minutes.
+
+    <!--<strong>Estimated delivery time:</strong> 45 minutes-->
 </div>
 
 <div class="pull-right">
     <div class="row">
-        <h3>Total Price: $77.70</h3>
+        <h3>Total Price: $@totalPrice</h3>
     </div>
     <div class="row pull-right">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">Confirm</button>
+        <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">Confirm</button>-->
+        <a class="btn btn-primary" href="/Menu/Index">Place Order</a>
     </div>
 </div>
 
-<div id="successModal" class="modal fade" role="dialog">
+<!--<div id="successModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -82,4 +89,4 @@
         </div>
 
     </div>
-</div>
+</div>-->
