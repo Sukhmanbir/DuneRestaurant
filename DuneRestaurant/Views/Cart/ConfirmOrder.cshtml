@@ -40,7 +40,7 @@
                 @totalItemsOrdered += @item.Quantity;
                 @totalPrice += @total;
 
-                <form method="post" action="/Cart/Update">
+                <form>
                     <tr>
                         <td>@item.Name</td>
                         <td>@item.Description_Short</td>
@@ -68,7 +68,7 @@
     </div>
     <div class="row pull-right">
         <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">Confirm</button>-->
-        <a class="btn btn-primary" href="/Menu/Index">Place Order</a>
+        <a class="btn btn-primary" href="/Cart/Complete">Place Order</a>
     </div>
 </div>
 

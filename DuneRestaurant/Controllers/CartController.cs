@@ -118,6 +118,11 @@ namespace DuneRestaurant.Controllers
 
             return View(azure.CartViews.ToList());
         }
+
+        public ActionResult Complete()
+        {
+            return View();
+        }
         
     }
 }
