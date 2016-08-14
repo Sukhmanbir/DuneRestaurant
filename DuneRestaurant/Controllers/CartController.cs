@@ -11,6 +11,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,11 +22,13 @@ namespace DuneRestaurant.Controllers
 {
     public class CartController : Controller
     {
+        //establish a class wide azure connection
+        AzureConnection azure = new AzureConnection();
+
         // GET: Cart
         public ActionResult Index()
         {
 
-            AzureConnection azure = new AzureConnection();
             
             return View(azure.CartViews.ToList());
 
@@ -65,6 +68,19 @@ namespace DuneRestaurant.Controllers
 
         public ActionResult Add() {
             return View();
+        }
+        public async Task<ActionResult> Add([Bind(Include = "DishID,CartID,UserId,Quantity")] Cart cart)
+        {
+            //add the dish to the cart
+            if (ModelState.IsValid)
+            {
+                azure.Carts.Add(cart);
+                await azure.SaveChangesAsync();
+                //redirect to the index action so you can see the Students table!
+                return RedirectToAction("Index");
+            }
+
+            return View(cart);
         }
 
         [HttpPost]
