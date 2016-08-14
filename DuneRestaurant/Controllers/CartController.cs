@@ -9,6 +9,7 @@
         update cart quantity
         delete cart item
         added items to cart
+        display only items belonging to specific user
 */
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,15 @@ namespace DuneRestaurant.Controllers
         public ActionResult Index()
         {
 
-            
-            return View(azure.CartViews.ToList());
+            var userID = User.Identity.GetUserId();
+
+            // there is no userID, so we must use the session id
+            if (userID == null && Session["userID"] != null)
+            {
+                userID = Session["userID"].ToString();
+            }
+
+            return View(azure.CartViews.Where(x => x.UserID == userID).ToList());
 
         }
 
@@ -127,6 +135,7 @@ namespace DuneRestaurant.Controllers
 
                     cartModel.DishID = dishID;
                     cartModel.UserID = userID;
+                    cartModel.Quantity = 1;
                     db.Carts.Add(cartModel);
                     db.SaveChanges();
 

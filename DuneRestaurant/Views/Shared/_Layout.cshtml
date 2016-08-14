@@ -5,6 +5,7 @@
     website: http://dunerestaurant.azurewebsites.net
     history:
         initial commit (HTML)
+        remove hardcoded item quantity from cart
 -->
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Menu", "Index", "Menu")</li>
-                    <li><a href="/Cart">Cart (1)</a></li>
+                    <li><a href="/Cart">Cart</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
