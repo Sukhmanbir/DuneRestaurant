@@ -13,10 +13,11 @@
 
 @using DuneRestaurant.Models
 @model Dish
-
+//set up the url
+@{ string fullURL = Model.URL + ".png"; }
 <div class="row">
     <div class="col-md-6">
-        <img class="shadow" src="~/Assets/Images/porkandpepper.png" alt="Pork and Pepper" />
+        <img class="shadow" src="~/Assets/Images/@fullURL" alt="Pork and Pepper" />
     </div>
     <div class="col-md-6">
         <h2>
